@@ -2,7 +2,7 @@ require 'auditor/version'
 require 'fileutils'
 require 'bundler/audit/scanner'
 require 'auditor/database'
-require 'auditor/updated_gem_report'
+require 'auditor/unpatched_gem_result'
 require 'auditor/insecure_source_result'
 require 'auditor/grouped_result'
 
@@ -33,7 +33,7 @@ module Auditor
         when ::Bundler::Audit::Scanner::InsecureSource
           InsecureSourceResult.new(result.source, directory)
         when ::Bundler::Audit::Scanner::UnpatchedGem
-          UnpatchedGemReport.new(result.gem, result.advisory, directory)
+          UnpatchedGemResult.new(result.gem, result.advisory, directory)
         end
       end)
     end

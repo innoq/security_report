@@ -2,7 +2,7 @@ require 'forwardable'
 require 'auditor/problem'
 
 module Auditor
-  class UnpatchedGemReport
+  class UnpatchedGemResult
     extend Forwardable
 
     attr_reader :identifier
