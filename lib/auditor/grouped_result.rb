@@ -12,8 +12,8 @@ module Auditor
       @results.map(&:target).uniq
     end
 
-    def problem
-      @results.map(&:problem).join("\n")
+    def problems
+      @results.map(&:problem)
     end
 
     def solution

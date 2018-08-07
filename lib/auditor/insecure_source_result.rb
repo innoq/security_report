@@ -9,7 +9,7 @@ module Auditor
     end
 
     def problem
-      "Do not use an insecure Source URI"
+      Problem.new("Insecure URI", "Do not use an insecure Source URI", nil)
     end
 
     def solution

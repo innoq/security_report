@@ -27,7 +27,7 @@ def tableize(title, results)
         result.identifier,
         result.targets.join(", "),
         result.solution,
-        result.problem
+        result.problems.map(&:summary).join("\n")
       ]
     end
   )

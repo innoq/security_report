@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'auditor/problem'
 
 module Auditor
   class UnpatchedGemReport
@@ -16,7 +17,7 @@ module Auditor
     end
 
     def problem
-      "#{problem_id} (#{problem_title}) #{advisory.url}"
+      Problem.new(problem_id, advisory.title, advisory.url)
     end
 
     def solution
@@ -37,14 +38,6 @@ module Auditor
       elsif advisory.osvdb
         advisory.osvdb
       end
-    end
-
-    def problem_title
-      truncate(advisory.title, 30)
-    end
-
-    def truncate(string, max)
-      string.length > max ? "#{string[0...max].strip}..." : string
     end
   end
 end

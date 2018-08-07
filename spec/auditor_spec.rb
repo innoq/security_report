@@ -30,7 +30,7 @@ RSpec.describe Auditor do
 
       insecure_gem_source_result = results.detect { |result| result.identifier == "http://rubygems.org/" }
       expect(insecure_gem_source_result.targets).to eq ["spec/examples/project_2"]
-      expect(insecure_gem_source_result.problem).to eq "Do not use an insecure Source URI"
+      expect(insecure_gem_source_result.problems.first.summary).to eq "Insecure URI (Do not use an insecure Source...)"
       expect(insecure_gem_source_result.solution).to eq "Use a secure URI"
       expect(insecure_gem_source_result.criticality).to eq :high
     end
@@ -40,9 +40,7 @@ RSpec.describe Auditor do
 
       insecure_gem_source_result = results.detect { |result| result.identifier == "paperclip (2.8.0)" }
       expect(insecure_gem_source_result.targets).to eq ["spec/examples/project_1"]
-      expect(insecure_gem_source_result.problem).to include "CVE-2017-0889"
-      expect(insecure_gem_source_result.problem).to include "CVE-2015-2963"
-      expect(insecure_gem_source_result.problem).to include "103151"
+      expect(insecure_gem_source_result.problems.map(&:summary)).to contain_exactly("CVE-2017-0889 (Paperclip ruby gem suffers fro...)", "CVE-2015-2963 (Paperclip Gem for Ruby vulnera...)", "103151 (Paperclip Gem for Ruby contain...)")
       expect(insecure_gem_source_result.solution).to eq "Upgrade to a new version"
       expect(insecure_gem_source_result.criticality).to eq :high
     end
