@@ -1,9 +1,6 @@
 require 'auditor/version'
-require 'fileutils'
-require 'bundler/audit/scanner'
 require 'auditor/database'
-require 'auditor/unpatched_gem_result'
-require 'auditor/insecure_source_result'
+require 'auditor/scanner'
 require 'auditor/grouped_result'
 
 module Auditor
@@ -18,42 +15,18 @@ module Auditor
       auditor.results
     end
 
-    # Update the Audit Database
     def initialize
       @results = []
+      @scanner = Scanner.new
     end
 
     def check(directory)
-      scanner = with_gemfile do
-        ::Bundler::Audit::Scanner.new(directory)
-      end
-
-      @results.concat(scanner.scan.map do |result|
-        case result
-        when ::Bundler::Audit::Scanner::InsecureSource
-          InsecureSourceResult.new(result.source, directory)
-        when ::Bundler::Audit::Scanner::UnpatchedGem
-          UnpatchedGemResult.new(result.gem, result.advisory, directory)
-        end
-      end)
+      @results.concat(@scanner.scan(directory))
     end
 
     def results
-      @results.group_by(&:identifier).map { |_, res| GroupedResult.new(res) }
-    end
-
-    private
-
-    # This is a weird workaround, for methods that
-    # require a Gemfile in the current directory
-    def with_gemfile
-      if File.exist? 'Gemfile'
-        yield
-      else
-        FileUtils.touch 'Gemfile'
-        return_value = yield
-        FileUtils.rm 'Gemfile'
-        return_value
+      @results.group_by(&:identifier).map do |_, results|
+        GroupedResult.new(results)
       end
     end
   end

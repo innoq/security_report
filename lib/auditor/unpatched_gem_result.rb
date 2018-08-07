@@ -10,9 +10,9 @@ module Auditor
 
     def_delegator :advisory, :criticality
 
-    def initialize(gem_specification, advisory, target)
-      @identifier = gem_specification.to_s
-      @advisory = advisory
+    def initialize(scan_result, target)
+      @identifier = scan_result.gem.to_s
+      @advisory = scan_result.advisory
       @target = target
     end
 
@@ -26,6 +26,10 @@ module Auditor
       else
         "Upgrade to a new version"
       end
+    end
+
+    def self.matches?(obj)
+      obj.instance_of? ::Bundler::Audit::Scanner::UnpatchedGem
     end
 
     private

@@ -3,8 +3,8 @@ module Auditor
     attr_reader :identifier
     attr_reader :target
 
-    def initialize(source, target)
-      @identifier = source
+    def initialize(scan_result, target)
+      @identifier = scan_result.source
       @target = target
     end
 
@@ -18,6 +18,10 @@ module Auditor
 
     def criticality
       :high
+    end
+
+    def self.matches?(obj)
+      obj.instance_of? ::Bundler::Audit::Scanner::InsecureSource
     end
   end
 end
