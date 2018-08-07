@@ -21,14 +21,13 @@ end
 def tableize(title, results)
   Terminal::Table.new(
     title: title,
-    headings: ['Identifier', 'Target', 'Solution', 'Problem', 'More information'],
+    headings: ['Identifier', 'Target', 'Solution', 'Problem'],
     rows: results.map do |result|
       [
         result.identifier,
         result.targets.join(", "),
         result.solution,
-        result.problem,
-        result.more_information
+        result.problem
       ]
     end
   )

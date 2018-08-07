@@ -8,7 +8,6 @@ module Auditor
     attr_reader :target
 
     def_delegator :advisory, :criticality
-    def_delegator :advisory, :url, :more_information
 
     def initialize(gem_specification, advisory, target)
       @identifier = gem_specification.to_s
@@ -17,7 +16,7 @@ module Auditor
     end
 
     def problem
-      "#{problem_id} (#{problem_title})"
+      "#{problem_id} (#{problem_title}) #{advisory.url}"
     end
 
     def solution

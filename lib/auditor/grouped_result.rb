@@ -16,10 +16,6 @@ module Auditor
       @results.map(&:problem).join("\n")
     end
 
-    def more_information
-      @results.map(&:more_information).join("\n")
-    end
-
     def solution
       @results.map(&:solution).uniq.join(", ")
     end

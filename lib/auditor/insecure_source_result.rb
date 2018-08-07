@@ -12,10 +12,6 @@ module Auditor
       "Do not use an insecure Source URI"
     end
 
-    def more_information
-      ""
-    end
-
     def solution
       "Use a secure URI"
     end

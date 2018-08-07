@@ -45,7 +45,6 @@ RSpec.describe Auditor do
       expect(insecure_gem_source_result.problem).to include "103151"
       expect(insecure_gem_source_result.solution).to eq "Upgrade to a new version"
       expect(insecure_gem_source_result.criticality).to eq :high
-      expect(insecure_gem_source_result.more_information).to include "https://robots.thoughtbot.com/paperclip-security-release"
     end
   end
 end
