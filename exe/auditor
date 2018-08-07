@@ -13,8 +13,6 @@ def report(results)
     puts tableize("Low or unknown criticality", low_or_unknown) if low_or_unknown.any?
     puts
     puts "Vulnerabilities (#{high.size} high, #{medium.size} medium, #{low_or_unknown.size} low or unkown) found!"
-
-    exit 1
   else
     puts "No vulnerabilities found"
   end
@@ -36,6 +34,11 @@ def tableize(title, results)
   )
 end
 
-Auditor::Auditor.update
-results = Auditor::Auditor.audit(ARGV)
-report(results)
+if Auditor::Database.update
+  results = Auditor::Auditor.audit(ARGV)
+  report(results)
+  exit 1 if results.any?
+else
+  puts "Failed updating database!"
+  exit 1
+end

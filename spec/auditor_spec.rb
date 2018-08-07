@@ -1,10 +1,6 @@
 require 'fileutils'
 
 RSpec.describe Auditor do
-  before(:all) do
-    Auditor::Auditor.update
-  end
-
   context "in our example" do
     let(:example) { %w[spec/examples/project_1 spec/examples/project_2] }
 
