@@ -25,7 +25,7 @@ def tableize(title, results)
     rows: results.map do |result|
       [
         result.identifier,
-        result.target,
+        result.targets.join(", "),
         result.solution,
         result.problem,
         result.more_information

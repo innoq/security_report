@@ -29,7 +29,7 @@ RSpec.describe Auditor do
       results = Auditor::Auditor.audit(example)
 
       insecure_gem_source_result = results.detect { |result| result.identifier == "http://rubygems.org/" }
-      expect(insecure_gem_source_result.target).to eq "spec/examples/project_2"
+      expect(insecure_gem_source_result.targets).to eq ["spec/examples/project_2"]
       expect(insecure_gem_source_result.problem).to eq "Do not use an insecure Source URI"
       expect(insecure_gem_source_result.solution).to eq "Use a secure URI"
       expect(insecure_gem_source_result.criticality).to eq :high
@@ -39,7 +39,7 @@ RSpec.describe Auditor do
       results = Auditor::Auditor.audit(example)
 
       insecure_gem_source_result = results.detect { |result| result.identifier == "paperclip (2.8.0)" }
-      expect(insecure_gem_source_result.target).to eq "spec/examples/project_1"
+      expect(insecure_gem_source_result.targets).to eq ["spec/examples/project_1"]
       expect(insecure_gem_source_result.problem).to include "CVE-2017-0889"
       expect(insecure_gem_source_result.problem).to include "CVE-2015-2963"
       expect(insecure_gem_source_result.problem).to include "103151"

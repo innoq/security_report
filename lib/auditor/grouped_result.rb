@@ -8,8 +8,8 @@ module Auditor
       @results.first.identifier
     end
 
-    def target
-      @results.map(&:target).uniq.join(", ")
+    def targets
+      @results.map(&:target).uniq
     end
 
     def problem
