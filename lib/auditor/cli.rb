@@ -4,7 +4,7 @@ class CLI
   attr_accessor :format
 
   def initialize
-    @format = "table"
+    @format = "plain"
   end
 
   def help
@@ -14,7 +14,7 @@ class CLI
       -h, --help
         Print this message
       --format
-        Provide the format: table (default: table)
+        Provide the format: plain or table (default: plain)
       --update
         Update the vulnerability database before running
     HELPTEXT
@@ -23,6 +23,9 @@ class CLI
 
   def reporter
     case format
+    when "plain"
+      require 'auditor/plain_reporter'
+      @reporter = Auditor::PlainReporter.new
     when "table"
       require 'auditor/table_reporter'
       @reporter = Auditor::TableReporter.new
