@@ -1,5 +1,8 @@
 # security_report
 
+[![Build Status](https://travis-ci.org/innoq/security_report.svg?branch=master)](https://travis-ci.org/innoq/security_report)
+[![Depfu](https://badges.depfu.com/badges/d566920d877cee415e76cd9a4e680eb0/count.svg)](https://depfu.com/github/innoq/security_report?project=Bundler)
+
 Check Ruby projects for dependencies with known security problems. This project
 uses [bundler-audit](https://github.com/rubysec/bundler-audit) to check the
 Gemfiles. It then generates a report like this:
