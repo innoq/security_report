@@ -4,6 +4,10 @@ RSpec.describe SecurityReport do
   context "in our example" do
     let(:example) { %w[spec/examples/project_1 spec/examples/project_2] }
 
+    before(:all) do
+      SecurityReport::Database.update
+    end
+
     it "finds the results with high criticality" do
       results = SecurityReport::Auditor.audit(example)
 
