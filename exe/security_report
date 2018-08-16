@@ -3,7 +3,7 @@
 require 'clap'
 require 'security_report/cli'
 
-cli = CLI.new
+cli = SecurityReport::CLI.new
 
 files = Clap.run ARGV,
   "-h" => cli.method(:help),
