@@ -1,4 +1,4 @@
-module Auditor
+module SecurityReport
   class PlainReporter
     def report(results)
       results.each do |result|

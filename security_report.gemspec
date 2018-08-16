@@ -1,14 +1,14 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "auditor/version"
+require "security_report/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "auditor"
-  spec.version       = Auditor::VERSION
+  spec.name          = "security_report"
+  spec.version       = SecurityReport::VERSION
   spec.authors       = ["Lucas Dohmen"]
   spec.email         = ["lucas.dohmen@innoq.com"]
 
-  spec.summary       = "Audit Ruby projects for security"
+  spec.summary       = "Generate a security report"
   spec.description   = "Check Ruby projects for dependencies with known security problems"
 
   # Specify which files should be added to the gem when it is released.
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "clap", "~> 1.0"
   spec.add_dependency "bundler-audit", "~> 0.6"
+  spec.add_dependency "clap", "~> 1.0"
   spec.add_dependency "terminal-table", "~> 1.8"
 
   spec.add_development_dependency "bundler", "~> 1.16"

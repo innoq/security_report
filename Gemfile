@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in auditor.gemspec
+# Specify your gem's dependencies in security_report.gemspec
 gemspec

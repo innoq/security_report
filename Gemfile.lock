@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    auditor (0.1.0)
+    security_report (0.1.0)
       bundler-audit (~> 0.6)
       clap (~> 1.0)
       terminal-table (~> 1.8)
@@ -37,10 +37,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auditor!
   bundler (~> 1.16)
   rake (~> 12.3)
   rspec (~> 3.0)
+  security_report!
 
 BUNDLED WITH
    1.16.3

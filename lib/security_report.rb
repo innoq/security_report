@@ -1,9 +1,9 @@
-require 'auditor/version'
-require 'auditor/database'
-require 'auditor/scanner'
-require 'auditor/grouped_result'
+require 'security_report/version'
+require 'security_report/database'
+require 'security_report/scanner'
+require 'security_report/grouped_result'
 
-module Auditor
+module SecurityReport
   class Auditor
     def self.audit(directories)
       auditor = new

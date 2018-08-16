@@ -1,6 +1,6 @@
 require 'terminal-table'
 
-module Auditor
+module SecurityReport
   class TableReporter
     def report(results)
       if results.any?

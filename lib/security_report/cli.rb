@@ -1,4 +1,4 @@
-require 'auditor'
+require 'security_report'
 
 class CLI
   attr_accessor :format
@@ -9,7 +9,7 @@ class CLI
 
   def help
     puts <<~HELPTEXT
-      auditor [options] files...
+      security_report [options] files...
 
       -h, --help
         Print this message
@@ -24,11 +24,11 @@ class CLI
   def reporter
     case format
     when "plain"
-      require 'auditor/plain_reporter'
-      @reporter = Auditor::PlainReporter.new
+      require 'security_report/plain_reporter'
+      @reporter = SecurityReport::PlainReporter.new
     when "table"
-      require 'auditor/table_reporter'
-      @reporter = Auditor::TableReporter.new
+      require 'security_report/table_reporter'
+      @reporter = SecurityReport::TableReporter.new
     else
       puts "Unknown format '#{format}'"
       exit 1
@@ -36,13 +36,13 @@ class CLI
   end
 
   def update
-    return if Auditor::Database.update
+    return if SecurityReport::Database.update
     puts "Failed updating database!"
     exit 1
   end
 
   def run(files)
-    results = Auditor::Auditor.audit(files)
+    results = SecurityReport::Auditor.audit(files)
     reporter.report(results)
     exit 1 if results.any?
   end

@@ -1,7 +1,7 @@
 require 'forwardable'
-require 'auditor/problem'
+require 'security_report/problem'
 
-module Auditor
+module SecurityReport
   class UnpatchedGemResult
     extend Forwardable
 

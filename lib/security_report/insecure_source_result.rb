@@ -1,4 +1,4 @@
-module Auditor
+module SecurityReport
   class InsecureSourceResult
     attr_reader :identifier
     attr_reader :target

@@ -1,13 +1,13 @@
-# Auditor
+# security_report
 
 Check Ruby projects for dependencies with known security problems
 
 ## Installation
 
-    $ bundle exec rake install
+    $ gem install security_report
 
 ## Usage
 
 Get an audit for multiple projects like this:
 
-auditor path1 path2...
+security_report path1 path2...

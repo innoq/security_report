@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'clap'
-require 'auditor/cli'
+require 'security_report/cli'
 
 cli = CLI.new
 

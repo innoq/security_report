@@ -1,4 +1,4 @@
-module Auditor
+module SecurityReport
   class Problem
     def initialize(identifier, description, url)
       @identifier = identifier

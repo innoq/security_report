@@ -1,9 +1,9 @@
 require 'fileutils'
 require 'bundler/audit/scanner'
-require 'auditor/unpatched_gem_result'
-require 'auditor/insecure_source_result'
+require 'security_report/unpatched_gem_result'
+require 'security_report/insecure_source_result'
 
-module Auditor
+module SecurityReport
   class Scanner
     def scan(directory)
       results = with_gemfile do

@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "auditor"
+require "security_report"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

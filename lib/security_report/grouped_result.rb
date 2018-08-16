@@ -1,4 +1,4 @@
-module Auditor
+module SecurityReport
   class GroupedResult
     def initialize(results)
       @results = results

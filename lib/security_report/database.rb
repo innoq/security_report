@@ -1,6 +1,6 @@
 require 'bundler/audit/database'
 
-module Auditor
+module SecurityReport
   module Database
     def self.update
       ::Bundler::Audit::Database.update!(quiet: true)
