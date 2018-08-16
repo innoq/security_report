@@ -43,9 +43,9 @@ module SecurityReport
     end
 
     def run(files)
-      results = Auditor.audit(files)
-      reporter.report(results)
-      exit 1 if results.any?
+      auditor = Auditor.audit(files)
+      reporter.report(auditor.results, auditor.skipped)
+      exit 1 if auditor.results.any?
     end
   end
 end

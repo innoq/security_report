@@ -12,16 +12,21 @@ module SecurityReport
         auditor.check(directory)
       end
 
-      auditor.results
+      auditor
     end
+
+    attr_reader :skipped
 
     def initialize
       @results = []
+      @skipped = []
       @scanner = Scanner.new
     end
 
     def check(directory)
       @results.concat(@scanner.scan(directory))
+    rescue Errno::ENOENT
+      @skipped.push(directory)
     end
 
     def results
