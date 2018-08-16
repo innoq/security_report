@@ -19,14 +19,14 @@ RSpec.describe SecurityReport do
       results = SecurityReport::Auditor.audit(example).results
 
       results_with_medium_criticality = results.select { |result| result.criticality == :medium }
-      expect(results_with_medium_criticality.length).to be 0
+      expect(results_with_medium_criticality.map(&:identifier)).to contain_exactly("jquery-rails (3.0.4)")
     end
 
     it "finds the results with low criticality" do
       results = SecurityReport::Auditor.audit(example).results
 
       results_with_low_criticality = results.select { |result| result.criticality == :low }
-      expect(results_with_low_criticality.map(&:identifier)).to contain_exactly("jquery-rails (3.0.4)", "rest-client (1.6.7)", "sprockets (2.2.3)", "uglifier (2.4.0)")
+      expect(results_with_low_criticality.map(&:identifier)).to contain_exactly("rest-client (1.6.7)", "sprockets (2.2.3)", "uglifier (2.4.0)")
     end
 
     it "finds an insecure gem source" do
