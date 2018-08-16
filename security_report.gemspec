@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = SecurityReport::VERSION
   spec.authors       = ["Lucas Dohmen"]
   spec.email         = ["lucas.dohmen@innoq.com"]
+  spec.license       = "Apache-2.0"
 
   spec.summary       = "Generate a security report"
   spec.description   = "Check Ruby projects for dependencies with known security problems"

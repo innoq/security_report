@@ -8,6 +8,10 @@ Check Ruby projects for dependencies with known security problems
 
 ## Usage
 
-Get an audit for multiple projects like this:
+Get a security report for multiple projects like this:
 
 security_report path1 path2...
+
+## License
+
+security_report is licensed under Apache 2.0 License.
