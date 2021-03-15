@@ -17,7 +17,7 @@ module SecurityReport
 
     private
 
-    # This is a weird workaround, for methods that
+    # This is a weird workaround for methods that
     # require a Gemfile in the current directory
     def with_gemfile
       if File.exist? 'Gemfile'

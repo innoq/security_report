@@ -5,9 +5,9 @@ module SecurityReport
         high, medium_or_lower = results.partition { |result| result.criticality == :high }
         medium, low_or_unknown = medium_or_lower.partition { |result| result.criticality == :medium }
 
-        puts format_results(high) if high.any?
-        puts format_results(medium) if medium.any?
-        puts format_results(low_or_unknown) if low_or_unknown.any?
+        [high, medium, low_or_unknown].each do |results|
+          puts format_results(results) if results.any?
+        end
       else
         puts "No vulnerabilities found"
       end
@@ -23,10 +23,13 @@ module SecurityReport
     def format_results(results)
       results.map do |result|
         <<~HELPTEXT
-        # #{result.identifier}"
-        Projects: #{result.targets.join(", ")}"
-        Criticality: #{result.criticality}"
-        Solution: #{result.solution}"
+
+        # #{result.identifier}
+
+        Projects:    #{result.targets.join(", ")}
+        Criticality: #{result.criticality}
+        Solution:    #{result.solution}
+
         Problems:
         #{format_problems(result.problems)}
         HELPTEXT
@@ -35,7 +38,7 @@ module SecurityReport
 
     def format_problems(problems)
       problems.map do |problem|
-        "* #{problem.summary}"
+        " * #{problem.summary}"
       end.join("\n")
     end
   end

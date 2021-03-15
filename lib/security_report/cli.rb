@@ -5,7 +5,7 @@ module SecurityReport
     attr_accessor :format
 
     def initialize
-      @format = "plain"
+      @format = 'plain'
     end
 
     def help
@@ -24,10 +24,10 @@ module SecurityReport
 
     def reporter
       case format
-      when "plain"
+      when 'plain'
         require 'security_report/plain_reporter'
         @reporter = PlainReporter.new
-      when "table"
+      when 'table'
         require 'security_report/table_reporter'
         @reporter = TableReporter.new
       else
@@ -38,7 +38,7 @@ module SecurityReport
 
     def update
       return if Database.update
-      puts "Failed updating database!"
+      puts 'Failed updating database!'
       exit 1
     end
 

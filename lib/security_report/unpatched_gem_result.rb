@@ -38,7 +38,8 @@ module SecurityReport
 
     def problem_id
       if advisory.cve
-        "CVE-#{advisory.cve}"
+        #"CVE-#{advisory.cve}"
+        "https://cve.circl.lu/cve/CVE-#{advisory.cve}"
       elsif advisory.osvdb
         advisory.osvdb
       end

@@ -13,7 +13,7 @@ module SecurityReport
     private
 
     def truncate(string, max)
-      string.length > max ? "#{string[0...max].strip}..." : string
+      string.length > max ? "#{string[0 ... max - 3].strip}..." : string
     end
   end
 end

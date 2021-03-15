@@ -13,7 +13,7 @@ module SecurityReport
     end
 
     def solution
-      "Use a secure URI"
+      "Use a secure URI (https)"
     end
 
     def criticality

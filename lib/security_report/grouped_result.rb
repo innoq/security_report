@@ -22,7 +22,7 @@ module SecurityReport
 
     def criticality
       criticalities = @results.map(&:criticality).uniq
-      return :high if criticalities.include? :high
+      return :high   if criticalities.include? :high
       return :medium if criticalities.include? :medium
       :low
     end
