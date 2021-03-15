@@ -21,7 +21,7 @@ module SecurityReport
     end
 
     def self.matches?(obj)
-      obj.instance_of? ::Bundler::Audit::Scanner::InsecureSource
+      obj.instance_of? ::Bundler::Audit::Results::InsecureSource
     end
   end
 end

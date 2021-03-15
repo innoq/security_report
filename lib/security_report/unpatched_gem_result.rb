@@ -29,7 +29,7 @@ module SecurityReport
     end
 
     def self.matches?(obj)
-      obj.instance_of? ::Bundler::Audit::Scanner::UnpatchedGem
+      obj.instance_of? ::Bundler::Audit::Results::UnpatchedGem
     end
 
     private
