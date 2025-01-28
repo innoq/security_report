@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "bundler-audit", "~> 0.8"
   spec.add_dependency "clap", "~> 1.0"
-  spec.add_dependency "terminal-table", "~> 3.0"
+  spec.add_dependency "terminal-table", "~> 4.0"
 
   spec.add_development_dependency "bundler", "~> 1.1"
   spec.add_development_dependency "rake", "~> 13.0"
